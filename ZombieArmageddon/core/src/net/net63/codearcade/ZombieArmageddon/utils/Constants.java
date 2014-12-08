@@ -20,11 +20,11 @@ public class Constants {
 	public static final int PLAYER_WIDTH = (int) (42*1.5);
 	public static final int PLAYER_HEIGHT = (int) (64*1.5);
 	public static final int PLAYER_MAX_HEIGHT = 400;
-	public static final int PLAYER_SPEED = 150;
+	public static final int PLAYER_SPEED = 175;
 	
 	public static final int MONSTER_WIDTH = 25 * 2;
 	public static final int MONSTER_HEIGHT = 55 * 2;
-	public static final float MONSTER_SPEED = 100f;
+	public static final float MONSTER_SPEED = 75f;
 	
 	public static final int DISTANCE_THRESHHOLD = 10;
 	
@@ -46,11 +46,12 @@ public class Constants {
 		public static final int HEALTH = 14;
 	}
 	
-	public static final int MAX_MONSTERS = 4;
-	public static final int MONSTER_THRESHHOLD = 4;
+	public static final int MAX_MONSTERS = 3;
+	public static final int MAX_FINAL_MONSTERS = 9;
+	public static final int MONSTER_THRESHHOLD = 8;
 	public static final float MONSTER_CHANCE = 1f / 100f;
 	
-	public static final int PLAYER_REGEN = 15;
+	public static final int PLAYER_REGEN = 20;
 	public static final int ZOMBIE_REGEN = 5;
 	
 	public static final int BACKGROUND_Z = 0;

@@ -31,6 +31,8 @@ public class MonsterGenerationSystem extends EntitySystem{
 	private int numberKilled;
 	private int numMonsters;
 	
+	private float delta;
+	
 	public MonsterGenerationSystem(){
 		super(Constants.SYSTEM_PRIORITIES.MONSTER_GENERATION);
 		
@@ -39,6 +41,8 @@ public class MonsterGenerationSystem extends EntitySystem{
 		maxMonsters = Constants.MAX_MONSTERS;
 		numMonsters = 0;
 		numberKilled = 0;
+		
+		delta = 0;
 	}
 	
 	@Override
@@ -46,18 +50,28 @@ public class MonsterGenerationSystem extends EntitySystem{
 		this.engine = engine;
 	}
 	
+	public void randomMonster(){
+		int y = random.nextInt(Constants.PLAYER_MAX_HEIGHT);
+		int x = random.nextBoolean() ? -Constants.MONSTER_WIDTH - 20: Constants.SCREEN_WIDTH + 20;
+		
+		createMonster(x, y);
+		numMonsters++;
+		Assets.zombie.play(1f);
+		
+		delta = 0;
+	}
+	
 	@Override
 	public void update(float deltaTime){
 		super.update(deltaTime);
 		
-		if(numMonsters < maxMonsters && random.nextDouble() < Constants.MONSTER_CHANCE){
-			int y = random.nextInt(Constants.PLAYER_MAX_HEIGHT);
-			int x = random.nextBoolean() ? -Constants.MONSTER_WIDTH - 20: Constants.SCREEN_WIDTH + 20;
-			
-			createMonster(x, y);
-			numMonsters++;
-			Assets.zombie.play();
+		if(numMonsters < maxMonsters && delta > 1f && random.nextDouble() < Constants.MONSTER_CHANCE){
+			randomMonster();
+		} else if(numMonsters < maxMonsters && delta > 5f){
+			randomMonster();
 		}
+		
+		delta += deltaTime;
 	}
 	
 	public void monsterKilled(){
@@ -67,6 +81,7 @@ public class MonsterGenerationSystem extends EntitySystem{
 		if(numberKilled > Constants.MONSTER_THRESHHOLD){
 			numberKilled = 0;
 			maxMonsters++;
+			maxMonsters = Math.min(maxMonsters, Constants.MAX_FINAL_MONSTERS);
 		}
 	}
 	
