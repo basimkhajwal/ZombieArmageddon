@@ -47,8 +47,8 @@ public class Constants {
 	}
 	
 	public static final int MAX_MONSTERS = 3;
-	public static final int MAX_FINAL_MONSTERS = 9;
-	public static final int MONSTER_THRESHHOLD = 8;
+	public static final int MAX_FINAL_MONSTERS = 10;
+	public static final int MONSTER_THRESHHOLD = 7;
 	public static final float MONSTER_CHANCE = 1f / 100f;
 	
 	public static final int PLAYER_REGEN = 20;
