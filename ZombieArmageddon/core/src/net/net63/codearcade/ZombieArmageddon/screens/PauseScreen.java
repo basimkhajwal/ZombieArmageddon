@@ -37,7 +37,7 @@ public class PauseScreen extends AbstractScreen{
 		
 		batch.end();
 		
-		if(Gdx.input.isTouched() || Gdx.input.isKeyPressed(Keys.ANY_KEY)){
+		if(Gdx.input.justTouched() || Gdx.input.isKeyJustPressed(Keys.ANY_KEY)){
 			Assets.select.play(1f);
 			game.setScreen(gameScreen);
 		}
