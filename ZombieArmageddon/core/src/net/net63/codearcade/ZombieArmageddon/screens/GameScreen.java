@@ -82,14 +82,13 @@ public class GameScreen extends AbstractScreen{
 		
 		engine.update(delta);
 		
-		int minutes = (int) totalTime / 60;
-		int seconds = (int) (totalTime % 60);
+		int seconds = (int) (totalTime);
 		
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
 		
 		Assets.fonts[Assets.FONT_FIFTY].setColor(Color.MAROON);
-		Assets.fonts[Assets.FONT_FIFTY].draw(batch, ((minutes == 0)? "": minutes + "min ") + seconds, 400, Constants.SCREEN_HEIGHT - 40);
+		Assets.fonts[Assets.FONT_FIFTY].draw(batch, "" + seconds, 400, Constants.SCREEN_HEIGHT - 40);
 		
 		batch.end();
 		
