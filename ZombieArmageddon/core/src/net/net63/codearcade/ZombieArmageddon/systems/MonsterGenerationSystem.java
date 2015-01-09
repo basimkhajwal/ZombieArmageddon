@@ -65,9 +65,9 @@ public class MonsterGenerationSystem extends EntitySystem{
 	public void update(float deltaTime){
 		super.update(deltaTime);
 		
-		if(numMonsters < maxMonsters && delta > 0.4f && random.nextDouble() < Constants.MONSTER_CHANCE){
+		if(numMonsters < maxMonsters && delta > 0.2f && random.nextDouble() < Constants.MONSTER_CHANCE){
 			randomMonster();
-		} else if(numMonsters < maxMonsters && delta > 4f){
+		} else if(numMonsters < maxMonsters && delta > 3f){
 			randomMonster();
 		}
 		
